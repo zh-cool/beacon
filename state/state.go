@@ -4,6 +4,7 @@ import (
 	"dfinity/beacon/bls"
 	dfn "dfinity/beacon/common"
 	"fmt"
+	"github.com/ethereum/go-ethereum/crypto/sha3"
 	"github.com/ethereum/go-ethereum/common"
 )
 
@@ -11,6 +12,7 @@ import (
 type State struct {
 	nodes  map[common.Address]Node
 	groups map[common.Address]Group
+	hashval [64]byte
 	sig    bls.Signature
 }
 
@@ -20,6 +22,14 @@ func NewState() State {
 	s.nodes = make(map[common.Address]Node)
 	s.groups = make(map[common.Address]Group)
 	return s
+}
+
+func (s *State) SetHash(hash string){
+        s.hashval = sha3.Sum512([]byte(hash))
+}
+
+func (s *State) GetHash()([64]byte){
+        return s.hashval
 }
 
 // AddNode --
