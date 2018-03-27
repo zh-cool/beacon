@@ -306,7 +306,7 @@ func testOrder(t *testing.T, c int) {
 }
 
 func testDHKeyExchange(t *testing.T) {
-	var sec1, sec2 SecretKey
+	var sec1, sec2  SecretKey
 	sec1.SetByCSPRNG()
 	sec2.SetByCSPRNG()
 	pub1 := sec1.GetPublicKey()
@@ -336,7 +336,7 @@ func test(t *testing.T, c int) {
 	testDHKeyExchange(t)
 }
 
-func TestMain(t *testing.T) {
+func Test_Main(t *testing.T) {
 	t.Logf("GetMaxOpUnitSize() = %d\n", GetMaxOpUnitSize())
 	t.Log("CurveFp254BNb")
 	test(t, CurveFp254BNb)

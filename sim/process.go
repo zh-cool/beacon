@@ -89,7 +89,7 @@ func (p *ProcessSimulator) GetSeckeyForGroup(g state.Group) (sec bls.Seckey) {
 	addr := g.Address()
 	gseed := p.rseed.DerivedRand(addr[:])
 	sec = bls.SeckeyFromRand(gseed.Deri(0))
-	//	fmt.Printf("sec for group: %s\n", sec.String())
+		fmt.Printf("sec for group: %s\n", sec.String())
 	return
 }
 
